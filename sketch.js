@@ -13,6 +13,7 @@ let world;
 //corda, fruta, chão e coelho
 var rope, fruit, ground, bunny;
 
+var Benjamim;
 //ligação
 var fruit_con;
 
@@ -27,16 +28,21 @@ var blinkImg, eatImg, sadImg;
 
 function preload() {
   //imagens
-  bgImg = loadImage('background.png');
-  fruitImg = loadImage('melon.png');
-  bunnyImg = loadImage('Rabbit-01.png');
+  bgImg = loadImage("background.png");
+  fruitImg = loadImage("melon.png");
+  bunnyImg = loadImage("Rabbit-01.png");
 
   //animações
   blinkImg = loadAnimation("blink_1.png", "blink_2.png", "blink_3.png");
-  eatImg = loadAnimation("eat_0.png", "eat_1.png", "eat_2.png", "eat_3.png", "eat_4.png");
-  
+  eatImg = loadAnimation(
+    "eat_0.png",
+    "eat_1.png",
+    "eat_2.png",
+    "eat_3.png",
+    "eat_4.png"
+  );
+
   //triste
-  
 
   //ligar e desligar animações
   blinkImg.playing = true;
@@ -45,9 +51,6 @@ function preload() {
   eatImg.looping = false;
 
   //----- sad: playing e lopping,  -----//
-
-
-
 }
 
 function setup() {
@@ -57,36 +60,27 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  cutB = createImg('cut_btn.png');
+  cutB = createImg("cut_btn.png");
   cutB.position(220, 30);
   cutB.size(50, 50);
   cutB.mouseClicked(drop);
 
-  //frameDelay  
+  //frameDelay
   blinkImg.frameDelay = 50;
   eatImg.frameDelay = 50;
- 
+
   //fazer o frameDelay para sad
-
-
-
-
 
   //sprite coelho e outras características
   bunny = createSprite(230, 620, 100, 100);
   bunny.scale = 0.2;
 
   //carregar animações do coelho
-  bunny.addAnimation('piscando', blinkImg);
-  bunny.addAnimation('comendo', eatImg);
+  bunny.addAnimation("piscando", blinkImg);
+  bunny.addAnimation("comendo", eatImg);
   //adicionar a animação do coelho chorando
 
-
-  bunny.changeAnimation('piscando', blinkImg);
-
-
-
-
+  bunny.changeAnimation("piscando", blinkImg);
 
   //corda
   rope = new Rope(7, { x: 250, y: 30 });
@@ -102,7 +96,6 @@ function setup() {
   rectMode(CENTER);
   ellipseMode(RADIUS);
   imageMode(CENTER);
-
 }
 
 function draw() {
@@ -119,23 +112,14 @@ function draw() {
   ground.show();
   Engine.update(engine);
 
-
   //if para aplicar animação, aluno
   //primeiro: se a fruta colidir com o coelho
- 
-    //mudar a animação do coelho para "comendo"
-    
- 
 
-
+  //mudar a animação do coelho para "comendo"
 
   //if colisão da fruta com o chão
- 
-    //mudar a animação do coelho para chorando
-    
-  
 
-
+  //mudar a animação do coelho para chorando
 
   drawSprites();
 }
@@ -146,6 +130,4 @@ function drop() {
   fruit_con = null;
 }
 
-
 //função de colisão para fruta e o coelho
-
